@@ -1,0 +1,11 @@
+@include font-face("Ubuntu-Bold", "Ubuntu-Bold", 400);
+@include font-face("Ubuntu-BoldItalic", "Ubuntu-BoldItalic", 400);
+@include font-face("Ubuntu-Italic", "Ubuntu-Italic", 400);
+@include font-face("Ubuntu-Light", "Ubuntu-Light", 400);
+@include font-face("Ubuntu-LightItalic", "Ubuntu-LightItalic", 400);
+@include font-face("Ubuntu-Regular", "Ubuntu-Regular", 400);
+
+* {
+  font-family: 'Ubuntu';
+  font-style: normal;
+}

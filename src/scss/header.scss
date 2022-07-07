@@ -1,0 +1,40 @@
+
+.header  {
+  background: #17191D;
+  position: fixed;
+  width: 100%;
+  padding: 30px 0;
+  z-index: 100;
+  &-content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-block {
+    display: flex;
+    align-items: center;
+    p {
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 41px;
+      color: #F2F2F2;
+    }
+  }
+
+  &-link {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-left: 30px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:hover  {
+      text-decoration-line: underline;
+    }
+  }
+}
