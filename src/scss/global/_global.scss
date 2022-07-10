@@ -68,6 +68,7 @@ h6 {
 .container {
 	max-width: 1780px;
 	padding: 0 20px;
+	margin: 0 auto;
 	@media (min-width: 768px) {
 		padding: 0 70px;
 	}
@@ -77,4 +78,116 @@ h6 {
 	font-weight: 700;
 	text-align: center;
 	color: #FFFFFF;
+}
+
+.select {
+	position: relative;
+	text-align-last: left;
+	font-size: 16px;
+	line-height: 18px;
+	//max-width: 320px;
+	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+	border-radius: 7px;
+	width: 100%;
+	background: #FFFFFF;
+
+	&__label {
+		//color: $grey2;
+		color: #585858;
+		font-weight: bold;
+		margin-bottom: 8px;
+		font-size: 16px;
+		line-height: 22px;
+		display: block;
+	}
+
+	&__current {
+		width: 100%;
+		//border: 1px solid $grey4;
+		padding: 16px 54px 16px 24px;
+		border-radius: 4px;
+		position: relative;
+		cursor: pointer;
+		color: #585858;
+
+		&::after {
+			content: url("/img//select-arrow.svg");
+			position: absolute;
+			right: 14px;
+		}
+	}
+
+	&__list {
+		width: 100%;
+		overflow: hidden;
+		//border: 1px solid $grey4;
+		margin-top: 8px;
+		border-radius: 4px;
+		display: none;
+		position: absolute;
+		top: 100%;
+		z-index: 10;
+		background: #FFFFFF;
+	}
+
+	.show {
+		display: block
+	}
+
+	&__item {
+		padding: 16px 24px;
+		cursor: pointer;
+		border: none;
+		display: inline-block;
+		width: 100%;
+		//color: $grey2;
+		color: #585858;
+		box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+
+		&:hover,
+		&:focus {
+			color: #585858;
+		}
+	}
+}
+
+.cursor {
+	pointer-events: none;
+	@media (max-width: 992px) {
+		display: none;
+	}
+	&__ball {
+		position: fixed;
+		top: 0;
+		left: 0;
+		mix-blend-mode: difference;
+		z-index: 1000;
+		circle {
+		  fill: #f7f8fa;
+		}
+		background: rgba(255, 255, 255, 0.24);
+		border: 2px solid #FFFFFF;
+		box-sizing: border-box;
+		box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		&--small {
+			width: 5px;
+			height: 5px;
+			background: rgba(255, 255, 255, 0.24);
+			border: 2px solid #FFFFFF;
+			border-radius: 50%;
+			//mix-blend-mode: exclusion;
+		}
+	}
+}
+
+
+.hidden {
+	overflow: hidden;
+}
+.out {
+	transform: translateY( -90px);
+	transition: all 0.3s;
 }

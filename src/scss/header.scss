@@ -1,23 +1,46 @@
-
+@import "base/mixins";
 .header  {
   background: #17191D;
   position: fixed;
   width: 100%;
-  padding: 30px 0;
+  padding: 16px 0;
   z-index: 100;
+  transition: all 0.3s;
+  @media (min-width: 992px) {
+    position: static;
+    padding: 30px 0;
+  }
   &-content {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
+
 
   &-block {
     display: flex;
     align-items: center;
     p {
       font-weight: 500;
-      font-size: 36px;
-      line-height: 41px;
+      font-size: calcFluidSize(20, 36);
+      line-height: calcFluidSize(20, 41);
       color: #F2F2F2;
+      margin-left: 3px;
+    }
+    img {
+      width: 40px;
+      height: 35px;
+      @media (min-width: 768px) {
+        width: auto;
+        height: auto;
+      }
+    }
+  }
+
+  &-desk {
+    display: none;
+    @media (min-width: 768px) {
+      display: flex;
     }
   }
 
@@ -36,5 +59,93 @@
     &:hover  {
       text-decoration-line: underline;
     }
+  }
+
+  .hamburger {
+    @media (min-width: 768px) {
+      display: none;
+    }
+    &-close, &-open {
+      display: none;
+      transition: all 0.3s;
+    }
+    .active {
+      display: flex;
+      transform: rotate(180deg);
+      transition: all 0.3s;
+    }
+  }
+}
+
+.hamburger-menu {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 150;
+  top: 65px;
+  padding-bottom: 35px;
+  height: calc((var(--vh, 1vh) * 100) - 65px);
+  transform: translateX(-100%);
+  transition: all 0.3s;
+  &-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    padding: 35px 20px 0 20px;
+    &:after {
+      content: "";
+      inset: 0;
+      height: 100vh;
+      width: 100%;
+      backdrop-filter: blur(100px);
+      -webkit-backdrop-filter: blur(100px);
+      position: absolute;
+      background: linear-gradient(104.93deg, rgba(122, 122, 122, 0.19) 1.86%, rgba(122, 122, 122, 0) 104.73%);
+      filter: drop-shadow(0px 4px 4px rgba(50, 50, 50, 0.15));
+    }
+  }
+
+  &-item {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    z-index: 200;
+    margin-top: 20px;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .social {
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &-block {
+      margin-bottom: 30px;
+    }
+    &-link {
+      margin-right: 15px;
+      &:last-child {
+        margin-right: 0px;
+      }
+    }
+    &-link {
+      span {
+        font-size: 16px;
+        line-height: 18px;
+        color: #B1B1B1;
+        font-family: Ubuntu-Light,sans-serif;
+      }
+    }
+  }
+
+  &.active {
+    transform: translateX(0);
   }
 }
