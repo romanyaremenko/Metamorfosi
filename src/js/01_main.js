@@ -203,7 +203,10 @@ const anchors = document.querySelectorAll('a[href*="#"]')
 for (let anchor of anchors) {
     anchor.addEventListener('click', function (e) {
         e.preventDefault()
-
+        hamburegOpen.classList.add('active')
+        hamburegMenu.classList.remove('active')
+        hamburegClose.classList.remove('active')
+        document.querySelector('body').classList.toggle('hidden')
         const blockID = anchor.getAttribute('href').substr(1)
 
         document.getElementById(blockID).scrollIntoView({
