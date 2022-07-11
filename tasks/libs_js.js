@@ -1,4 +1,4 @@
-const plugins = ['./src/js/libs/gsap.js','./src/js/libs/swiper.js','./src/js/libs/jquery.js'];
+const plugins = ['./src/js/libs/gsap.js','./src/js/libs/swiper.js'];
 const {
 	src,
 	dest

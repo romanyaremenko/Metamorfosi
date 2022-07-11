@@ -35,21 +35,6 @@ var swiper = new Swiper(".mySwiper", {
         // hide: true,
     },
     breakpoints: {
-        // when window width is >= 320px
-        // 320: {
-        //     slidesPerView: 2,
-        //     spaceBetween: 20
-        // },
-        // // when window width is >= 480px
-        // 480: {
-        //     slidesPerView: 3,
-        //     spaceBetween: 30
-        // },
-        // // when window width is >= 640px
-        // 640: {
-        //     slidesPerView: 4,
-        //     spaceBetween: 40
-        // }
         992: {
             slidesPerView: 3.4,
             spaceBetween: 20,
@@ -118,36 +103,6 @@ if (customSelect) {
     })
 }
 
-// const $bigBall = document.querySelector('.cursor__ball--big')
-// const $hoverables = document.querySelectorAll('.hoverable')
-//
-// // Listeners
-// document.body.addEventListener('mousemove', onMouseMove)
-// for (let i = 0; i < $hoverables.length; i++) {
-//     $hoverables[i].addEventListener('mouseenter', onMouseHover)
-//     $hoverables[i].addEventListener('mouseleave', onMouseHoverOut)
-// }
-//
-// // Move the cursor
-// function onMouseMove(e) {
-//     TweenMax.to($bigBall, 0.1, {
-//         x: e.clientX - 20,
-//         y: e.clientY - 17
-//     })
-// }
-//
-// // Hover an element
-// function onMouseHover() {
-//     TweenMax.to($bigBall, 0.3, {
-//         scale: 0.5
-//     })
-// }
-//
-// function onMouseHoverOut() {
-//     TweenMax.to($bigBall, 0.3, {
-//         scale: 1
-//     })
-// }
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -155,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const $smallBall = document.querySelector('.cursor__ball--small')
     const $hoverables = document.querySelectorAll('.cursor_activ')
 
-    // Listeners
     document.body.addEventListener('mousemove', onMouseMove)
     for (let i = 0; i < $hoverables.length; i++) {
         $hoverables[i].addEventListener('mouseenter', onMouseHover)
@@ -174,7 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    // Hover an element
     function onMouseHover() {
         TweenMax.to($bigBall, 0.3, {
             scale: 0.5
@@ -241,30 +194,31 @@ hamburegBtn.addEventListener('click',function (){
 })
 
 
-var $page = $('html, body');
-$('a[href^="#"]').click(function() {
-    hamburegOpen.classList.add('active')
-    hamburegMenu.classList.remove('active')
-    hamburegClose.classList.remove('active')
-    document.querySelector('body').classList.remove('hidden')
+const anchors = document.querySelectorAll('a[href*="#"]')
+for (let anchor of anchors) {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault()
 
-    $page.animate({
-        scrollTop: $($.attr(this, 'href')).offset().top
-    }, 1000);
-    return false;
-});
+        const blockID = anchor.getAttribute('href').substr(1)
+
+        document.getElementById(blockID).scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        })
+    })
+}
+
 
 if(window.innerWidth <= 992) {
-    var header = $('.header'),
+    let header = document.querySelector('.header'),
     scrollPrev = 0;
-
-    $(window).scroll(function() {
-        var scrolled = $(window).scrollTop();
-        if ( scrolled > 200 && scrolled > scrollPrev ) {
-            header.addClass('out');
-        } else {
-            header.removeClass('out');
-        }
-        scrollPrev = scrolled;
-    });
+    window.addEventListener('scroll',function () {
+        let scrolled = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+            if ( scrolled > 200 && scrolled > scrollPrev ) {
+                header.classList.add('out');
+            } else {
+                header.classList.remove('out');
+            }
+            scrollPrev = scrolled;
+    })
 }
