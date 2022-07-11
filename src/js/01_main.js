@@ -35,6 +35,11 @@ var swiper = new Swiper(".mySwiper", {
         // hide: true,
     },
     breakpoints: {
+        550: {
+            slidesPerView: 2.4,
+            spaceBetween: 20,
+            centeredSlides:false,
+        },
         992: {
             slidesPerView: 3.4,
             spaceBetween: 20,
